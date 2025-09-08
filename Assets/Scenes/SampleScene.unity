@@ -1236,6 +1236,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1806762887}
   - {fileID: 831254236}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1285,9 +1286,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -224, y: 0}
-  m_SizeDelta: {x: -983.772, y: -403.2491}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -20, y: 31}
+  m_SizeDelta: {x: -955.0302, y: -407.7298}
+  m_Pivot: {x: 0.1, y: 0.1}
 --- !u!114 &794800929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1301,30 +1302,126 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardList:
-  - cardName: watermelon
-    cardImage: {fileID: -812189479, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: corn
-    cardImage: {fileID: 1818445648, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: banana
-    cardImage: {fileID: 1251460914, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: pear
-    cardImage: {fileID: 96075065, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: strawberry
-    cardImage: {fileID: -475284108, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: carrot
-    cardImage: {fileID: -1156366561, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: lemon
-    cardImage: {fileID: -948947587, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: orange
-    cardImage: {fileID: -748636450, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: potato
-    cardImage: {fileID: -1723587214, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: grapes
-    cardImage: {fileID: 1533781706, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: pineaple
+  - cardName: "Pi\xF1a_ES"
     cardImage: {fileID: -2097456883, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
-  - cardName: onion
+    textLabel: "pi\xF1a"
+    useTextOnly: 0
+    matchID: 1
+  - cardName: "Pi\xF1a_EN"
+    cardImage: {fileID: -2097456883, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: pineaple
+    useTextOnly: 1
+    matchID: 1
+  - cardName: Platano_es
+    cardImage: {fileID: 1251460914, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: platano
+    useTextOnly: 0
+    matchID: 2
+  - cardName: Platano_en
+    cardImage: {fileID: 1251460914, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: banana
+    useTextOnly: 1
+    matchID: 2
+  - cardName: corn_es
+    cardImage: {fileID: 1818445648, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: choclo
+    useTextOnly: 1
+    matchID: 3
+  - cardName: corn_en
+    cardImage: {fileID: -1156366561, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: corn
+    useTextOnly: 1
+    matchID: 3
+  - cardName: limon_es
+    cardImage: {fileID: -948947587, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: limon
+    useTextOnly: 1
+    matchID: 4
+  - cardName: limon_en
+    cardImage: {fileID: -948947587, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: lemon
+    useTextOnly: 1
+    matchID: 4
+  - cardName: potato_es
+    cardImage: {fileID: -1723587214, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: papa
+    useTextOnly: 0
+    matchID: 5
+  - cardName: potato_en
+    cardImage: {fileID: -1723587214, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: potatoe
+    useTextOnly: 1
+    matchID: 5
+  - cardName: uva_es
+    cardImage: {fileID: 1533781706, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: uvas
+    useTextOnly: 0
+    matchID: 6
+  - cardName: uva_en
+    cardImage: {fileID: 1533781706, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: grapes
+    useTextOnly: 1
+    matchID: 6
+  - cardName: onion_es
     cardImage: {fileID: 319257750, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: cebolla
+    useTextOnly: 0
+    matchID: 7
+  - cardName: onion_en
+    cardImage: {fileID: 319257750, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: onion
+    useTextOnly: 1
+    matchID: 7
+  - cardName: cherry_es
+    cardImage: {fileID: 1308835798, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: cereza
+    useTextOnly: 0
+    matchID: 8
+  - cardName: cherry_en
+    cardImage: {fileID: 319257750, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: cherry
+    useTextOnly: 1
+    matchID: 8
+  - cardName: naranja_es
+    cardImage: {fileID: -748636450, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: naranja
+    useTextOnly: 0
+    matchID: 9
+  - cardName: naranja_en
+    cardImage: {fileID: 319257750, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: orange
+    useTextOnly: 1
+    matchID: 9
+  - cardName: tomate_es
+    cardImage: {fileID: 160475302, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: tomate
+    useTextOnly: 0
+    matchID: 10
+  - cardName: tomate_en
+    cardImage: {fileID: 319257750, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: tomatoe
+    useTextOnly: 1
+    matchID: 10
+  - cardName: pera_es
+    cardImage: {fileID: 96075065, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: pera
+    useTextOnly: 0
+    matchID: 11
+  - cardName: pera_en
+    cardImage: {fileID: 319257750, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: pear
+    useTextOnly: 1
+    matchID: 11
+  - cardName: apple_es
+    cardImage: {fileID: -720398343, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: manzana
+    useTextOnly: 0
+    matchID: 12
+  - cardName: apple_en
+    cardImage: {fileID: -720398343, guid: 34b3600c73682dd418ded19ebec5e4cf, type: 3}
+    textLabel: apple
+    useTextOnly: 1
+    matchID: 12
   cardListToSort: []
   cardContainer: {fileID: 794800927}
   cardPrefab: {fileID: 8099730018742848870, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
@@ -1357,16 +1454,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 100
-    m_Right: 100
-    m_Top: -50
-    m_Bottom: -50
-  m_ChildAlignment: 1
+    m_Left: 20
+    m_Right: 0
+    m_Top: 20
+    m_Bottom: 0
+  m_ChildAlignment: 0
   fitType: 4
-  rows: 1
+  rows: 0
   columns: 6
-  cellSize: {x: 500, y: 750}
-  spacing: {x: 0, y: 0}
+  cellSize: {x: 300, y: NaN}
+  spacing: {x: 20, y: 20}
   fitX: 1
   fitY: 1
 --- !u!1 &831254235
@@ -1967,6 +2064,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599055995}
   m_CullTransparentMesh: 1
+--- !u!1 &1806762886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1806762887}
+  - component: {fileID: 1806762889}
+  - component: {fileID: 1806762888}
+  m_Layer: 5
+  m_Name: GameHUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1806762887
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806762886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 736415704}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 721.2577, y: 0}
+  m_SizeDelta: {x: -1476.9347, y: -60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1806762888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806762886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 53d287f76befbf545869591bc92239bd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1806762889
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806762886}
+  m_CullTransparentMesh: 1
 --- !u!1 &1937387837
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,9 +2285,37 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: NaN
       objectReference: {fileID: 0}
+    - target: {fileID: 455792136214782684, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 455792136214782684, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 455792136214782684, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 455792136214782684, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 455792136214782684, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1032234220939371355, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598128947982997652, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_text
+      value: gvnhh
+      objectReference: {fileID: 0}
+    - target: {fileID: 1598128947982997652, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3745667773859469144, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2123,11 +2323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777332379961116162, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4777332379961116162, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4777332379961116162, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchorMin.x
@@ -2139,7 +2339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777332379961116162, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -100
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 4777332379961116162, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2147,7 +2347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4777332379961116162, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 4777332379961116162, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2159,11 +2359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8099730018742848870, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8099730018742848870, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8099730018742848870, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2240,6 +2440,10 @@ PrefabInstance:
     - target: {fileID: 8306780365809133079, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
       propertyPath: m_Name
       value: Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 8306780365809133079, guid: d3a480ec68226844a97f4ca9ce6169c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1,23 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
- 
+using TMPro;
+
 public class CardSingleUI : MonoBehaviour
 {
     private CardGroup cardGroup;
 
     [SerializeField] private Button cardBackButton;
-
     [SerializeField] private Image cardBackBackground;
     [SerializeField] private Image cardFrontBackground;
     [SerializeField] private Image cardFrontImage;
 
     [SerializeField] private GameObject cardBack;
     [SerializeField] private GameObject cardFront;
+    [SerializeField] private Image frontImage;
+    [SerializeField] private TMP_Text frontText;
 
     private bool objectMatch;
+    private int matchID;   
 
     [Header("DoTween Animation")]
     [SerializeField] private Vector3 selectRotation = new Vector3();
@@ -41,13 +43,9 @@ public class CardSingleUI : MonoBehaviour
     private void Start()
     {
         cardBackButton.onClick.AddListener(OnClick);
-
         transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-
         StartCoroutine(WaitingToHide());
-
         MemoryGameManagerUI.Instance.Subscribe(this);
-
     }
 
     private void OnClick()
@@ -76,13 +74,11 @@ public class CardSingleUI : MonoBehaviour
         tweener[2] = transform.DORotate(deselectRotation, duration)
             .SetEase(Ease.InOutElastic)
             .OnUpdate(CheckWaitingToHide);
-
     }
 
     private void CheckWaitingToHide()
     {
         float elapsed = tweener[2].Elapsed();
-
         float halfDuration = tweener[2].Duration() / 2f;
 
         if (elapsed >= halfDuration)
@@ -95,7 +91,6 @@ public class CardSingleUI : MonoBehaviour
     private void CheckSelectHalfDuration()
     {
         float elapsed = tweener[0].Elapsed();
-
         float halfDuration = tweener[0].Duration() / 2f;
 
         if (elapsed >= halfDuration)
@@ -108,7 +103,6 @@ public class CardSingleUI : MonoBehaviour
     private void CheckDeselectHalfDuration()
     {
         float elapsed = tweener[0].Elapsed();
-
         float halfDuration = tweener[0].Duration() / 2f;
 
         if (elapsed >= halfDuration)
@@ -121,18 +115,29 @@ public class CardSingleUI : MonoBehaviour
     public Image GetCardBackBackground() => cardBackBackground;
     public Image GetCardFrontBackground() => cardFrontBackground;
 
-    public void SetObjectMatch()
-    {
-        objectMatch = true;
-    }
-
-    public void SetCardImage(Sprite sprite)
-    {
-        cardFrontImage.sprite = sprite;
-    }
-    
+    public void SetObjectMatch() => objectMatch = true;
     public bool GetObjectMatch() => objectMatch;
-
     public void DisableCardBackButton() => cardBackButton.interactable = false;
 
+   
+    public void SetCard(CardGridUI.Card data)
+    {
+        if (data.useTextOnly)
+        {
+            frontImage.gameObject.SetActive(false);
+            frontText.gameObject.SetActive(true);
+            frontText.text = data.textLabel;
+        }
+        else
+        {
+            frontImage.gameObject.SetActive(true);
+            frontImage.sprite = data.cardImage;
+            frontText.gameObject.SetActive(true);
+            frontText.text = data.textLabel;
+        }
+
+        matchID = data.matchID; 
+    }
+
+    public int GetMatchID() => matchID;  
 }

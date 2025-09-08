@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class FlexibleGridLayout : LayoutGroup
-{ 
+{
     public enum FitType
     {
         Uniform,
@@ -48,8 +48,15 @@ public class FlexibleGridLayout : LayoutGroup
         float parentWidth = rectTransform.rect.width;
         float parentHeight = rectTransform.rect.height;
 
-        float cellWidth = (parentWidth / (float)columns) - ((spacing.x / (float)columns) * 2) - (padding.left / (float)columns) - (padding.right / (float)columns);
-        float cellHeight = (parentHeight / (float)rows) - ((spacing.y / (float)rows) * 2) - (padding.top / (float)rows) - (padding.bottom / (float)rows);
+        //clculo corregido
+        float totalSpacingX = spacing.x * (columns - 1);
+        float totalSpacingY = spacing.y * (rows - 1);
+
+        float totalPaddingX = padding.left + padding.right;
+        float totalPaddingY = padding.top + padding.bottom;
+
+        float cellWidth = (parentWidth - totalSpacingX - totalPaddingX) / columns;
+        float cellHeight = (parentHeight - totalSpacingY - totalPaddingY) / rows;
 
         cellSize.x = fitX ? cellWidth : cellSize.x;
         cellSize.y = fitY ? cellHeight : cellSize.y;
@@ -64,53 +71,16 @@ public class FlexibleGridLayout : LayoutGroup
 
             var item = rectChildren[i];
 
-            var xPos = (cellSize.x * columnCount) + (spacing.x * columnCount) + padding.left;
-            var yPos = (cellSize.y * rowCount) + (spacing.y * rowCount) + padding.top;
+            float xPos = padding.left + (cellSize.x + spacing.x) * columnCount;
+            float yPos = padding.top + (cellSize.y + spacing.y) * rowCount;
 
             SetChildAlongAxis(item, 0, xPos, cellSize.x);
             SetChildAlongAxis(item, 1, yPos, cellSize.y);
         }
-    }
-
-    private Vector2 GetAnchor(TextAnchor alignment)
-    {
-        switch (alignment)
-        {
-            case TextAnchor.UpperLeft:
-                return new Vector2(0, 1);
-            case TextAnchor.UpperCenter:
-                return new Vector2(0.5f, 1);
-            case TextAnchor.UpperRight:
-                return new Vector2(1, 1);
-            case TextAnchor.MiddleLeft:
-                return new Vector2(0, 0.5f);
-            case TextAnchor.MiddleCenter:
-                return new Vector2(0.5f, 0.5f);
-            case TextAnchor.MiddleRight:
-                return new Vector2(1, 0.5f);
-            case TextAnchor.LowerLeft:
-                return new Vector2(0, 0);
-            case TextAnchor.LowerCenter:
-                return new Vector2(0.5f, 0);
-            case TextAnchor.LowerRight:
-                return new Vector2(1, 0);
-            default:
-                return new Vector2(0.5f, 0.5f);
-        }
-    }
-
-    public override void CalculateLayoutInputVertical()
-    {
 
     }
 
-    public override void SetLayoutHorizontal()
-    {
-
-    }
-
-    public override void SetLayoutVertical()
-    {
-
-    }
+    public override void CalculateLayoutInputVertical() { }
+    public override void SetLayoutHorizontal() { }
+    public override void SetLayoutVertical() { }
 }
