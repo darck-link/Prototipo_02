@@ -28,7 +28,7 @@ public class CardGridUI : MonoBehaviour
     }
 
     private void FillGrid()
-    {
+    {  
         int cardsToShow = 0;
 
         switch (MemoryGameManagerUI.Instance.GetDifficulty())

@@ -19,7 +19,7 @@ public abstract class MinigamesBase : MonoBehaviour
     {
         gameArea.SetActive(toggle);
     }
-
+     
     protected virtual void GameWin(int currencyValue, string titleText, string descriptionText, System.Action onNegative = null, System.Action onPositive = null)
     {
         Debug.Log($"{titleText} {descriptionText} {currencyValue}");
