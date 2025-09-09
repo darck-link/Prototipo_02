@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!1 &1597739649472577995
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,6 +135,8 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+=======
+>>>>>>> parent of 8fa0548 (nose)
 --- !u!1 &5701175363849806783
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +168,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 230624284460056165}
-  - {fileID: 455792136214782684}
   m_Father: {fileID: 8099730018742848870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -276,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e14658c317e60b545b42c97a668a31db, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7595cf8db4340e841a574bdb6a8cc566, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -538,8 +540,6 @@ MonoBehaviour:
   cardFrontImage: {fileID: 6916695495952299684}
   cardBack: {fileID: 7068735467365304108}
   cardFront: {fileID: 5701175363849806783}
-  frontImage: {fileID: 6916695495952299684}
-  frontText: {fileID: 1598128947982997652}
   selectRotation: {x: 0, y: 180, z: 0}
   deselectRotation: {x: 0, y: 0, z: 0}
   duration: 0.25

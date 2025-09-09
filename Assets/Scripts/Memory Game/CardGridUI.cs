@@ -10,11 +10,6 @@ public class CardGridUI : MonoBehaviour
     {
         public string cardName;
         public Sprite cardImage;
-        public string textLabel;
-        public bool useTextOnly;
-
-        [Header("Match ID (igual para cartas que son pareja)")]
-        public int matchID;
     }
 
     [SerializeField] private List<Card> cardList = new List<Card>();
@@ -33,52 +28,41 @@ public class CardGridUI : MonoBehaviour
     }
 
     private void FillGrid()
-    {
-        cardListToSort.Clear();
-
+    {  
         int cardsToShow = 0;
 
         switch (MemoryGameManagerUI.Instance.GetDifficulty())
         {
             case DifficultyEnum.Easy:
-                cardsToShow = 12; // significa 6 pares
+                cardsToShow = 6;
                 break;
             case DifficultyEnum.Normal:
-                cardsToShow = 16; // significa 8 pares 
+                cardsToShow = 9;
                 break;
             case DifficultyEnum.Hard:
-                cardsToShow = 20; // significa 10pares
+                cardsToShow = 12;
+                break;
+            default:
                 break;
         }
 
-        // 1) Agrupamos las cartas por matchID
-        var groupedByMatch = cardList.GroupBy(c => c.matchID).ToList();
-
-        // 2) Tomamos tantos pares como necesitemos
-        int pairsToTake = cardsToShow / 2;
-        var selectedGroups = groupedByMatch.Take(pairsToTake);
-
-        foreach (var group in selectedGroups)
+        for (int i = 0; i < cardsToShow; i++)
         {
-            foreach (var card in group) // aquí entran las dos (ES y EN)
-            {
-                cardListToSort.Add(card);
-            }
+            cardListToSort.Add(cardList[i]);
+            cardListToSort.Add(cardList[i]);
         }
 
-        // 3) Mezclamos
         System.Random rnd = new System.Random();
+
         IOrderedEnumerable<Card> randomized = cardListToSort.OrderBy(i => rnd.Next());
 
-        // 4) Instanciamos
         foreach (Card card in randomized)
         {
             Transform cardTransform = Instantiate(cardPrefab, cardContainer);
             cardTransform.gameObject.SetActive(true);
             cardTransform.name = card.cardName;
-            cardTransform.GetComponent<CardSingleUI>().SetCard(card);
+            cardTransform.GetComponent<CardSingleUI>().SetCardImage(card.cardImage);
         }
     }
-
 
 }
