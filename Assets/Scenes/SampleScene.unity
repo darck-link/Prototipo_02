@@ -1260,8 +1260,8 @@ GameObject:
   m_Component:
   - component: {fileID: 794800927}
   - component: {fileID: 794800929}
-  - component: {fileID: 794800931}
   - component: {fileID: 794800930}
+  - component: {fileID: 794800931}
   m_Layer: 5
   m_Name: CardArea
   m_TagString: Untagged
@@ -1450,22 +1450,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 794800926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b5ece47ce1e254bbbdfb4c6142e938, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
+    m_Left: 0
     m_Right: 0
-    m_Top: 20
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  fitType: 4
-  rows: 0
-  columns: 6
-  cellSize: {x: 300, y: NaN}
-  spacing: {x: 20, y: 20}
-  fitX: 1
-  fitY: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 150, y: 150}
+  m_Spacing: {x: 20, y: 20}
+  m_Constraint: 1
+  m_ConstraintCount: 3
 --- !u!1 &831254235
 GameObject:
   m_ObjectHideFlags: 0
