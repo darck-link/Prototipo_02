@@ -27,7 +27,7 @@ public class MemoryGameManagerUI : MinigamesBase
         cardGroup.OnCardMatch += CardGroup_OnCardMatch;
     }
 
-    private void OnEnable()
+    private void OnEnable() 
     {
         StartCoroutine(Initialize());
     }
