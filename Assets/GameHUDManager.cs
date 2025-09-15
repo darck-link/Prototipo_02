@@ -23,7 +23,7 @@ public class GameHUDManager : MonoBehaviour
 
     private int score = 0;
     private int errors = 0;
-    private int chances; // ahora configurable
+    private int chances;
     private float timer;
     private bool isPlaying;
 
@@ -121,4 +121,29 @@ public class GameHUDManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         DifficultyManager.Instance.Toggle(true);
     }
+
+    public void Retry()
+    {
+        winnerPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+
+        // Reiniciar HUD con el mismo tiempo y dificultad actual
+        DifficultyEnum difficulty = MemoryGameManagerUI.Instance.GetDifficulty();
+
+        float timeLimit = 60f;
+        switch (difficulty)
+        {
+            case DifficultyEnum.Easy: timeLimit = 60f; break;
+            case DifficultyEnum.Normal: timeLimit = 45f; break;
+            case DifficultyEnum.Hard: timeLimit = 30f; break;
+        }
+
+        // Ahora sí, pasamos ambos parámetros
+        StartGame(timeLimit, difficulty);
+
+        // Reinicia las cartas
+        MemoryGameManagerUI.Instance.Restart();
+    }
+
+
 }

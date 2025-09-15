@@ -95,15 +95,23 @@ public class MemoryGameManagerUI : MinigamesBase
     {
         cardSingleUIList.Clear();
 
-        float timeLimit = easyTime;
-
+        // Reiniciamos HUD con el tiempo según dificultad actual
+        float timeLimit = 60f;
         switch (currentDifficulty)
         {
-            case DifficultyEnum.Easy: timeLimit = easyTime; break;
-            case DifficultyEnum.Normal: timeLimit = normalTime; break;
-            case DifficultyEnum.Hard: timeLimit = hardTime; break;
+            case DifficultyEnum.Easy: timeLimit = 60f; break;
+            case DifficultyEnum.Normal: timeLimit = 45f; break;
+            case DifficultyEnum.Hard: timeLimit = 30f; break;
         }
 
         GameHUDManager.Instance.StartGame(timeLimit, currentDifficulty);
+
+        // Buscar el CardGridUI en la escena y regenerar las cartas
+        var grid = FindObjectOfType<CardGridUI>();
+        if (grid != null)
+        {
+            grid.FillGridPublic();
+        }
     }
+
 }

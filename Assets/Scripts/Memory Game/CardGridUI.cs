@@ -32,10 +32,10 @@ public class CardGridUI : MonoBehaviour
 
     private void OnEnable()
     {
-        FillGrid();
+        FillGridPublic();
     }
 
-    private void FillGrid()
+    public void FillGridPublic()
     {
         // Limpiar hijos anteriores en el contenedor (excepto el prefab base oculto)
         foreach (Transform child in cardContainer)
@@ -85,7 +85,7 @@ public class CardGridUI : MonoBehaviour
 
         // Mezclamos
         System.Random rnd = new System.Random();
-        IOrderedEnumerable<Card> randomized = cardListToSort.OrderBy(i => rnd.Next());
+        var randomized = cardListToSort.OrderBy(i => rnd.Next());
 
         // Instanciamos
         foreach (Card card in randomized)
