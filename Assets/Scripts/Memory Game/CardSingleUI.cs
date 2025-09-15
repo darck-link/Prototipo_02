@@ -34,10 +34,6 @@ public class CardSingleUI : MonoBehaviour
             cardGroup = transform.parent.GetComponent<CardGroup>();
         }
 
-        if (cardGroup != null)
-        {
-            cardGroup.Subscribe(this);
-        }
     }
 
     private void Start()

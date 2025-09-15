@@ -22,7 +22,10 @@ public class CardGridUI : MonoBehaviour
     [SerializeField] private Transform cardContainer;
     [SerializeField] private Transform cardPrefab;
 
-    private void Start() 
+    // Referencia al CardGroup
+    [SerializeField] private CardGroup cardGroup;
+
+    private void Start()
     {
         cardPrefab.gameObject.SetActive(false);
     }
@@ -34,51 +37,71 @@ public class CardGridUI : MonoBehaviour
 
     private void FillGrid()
     {
+        // Limpiar hijos anteriores en el contenedor (excepto el prefab base oculto)
+        foreach (Transform child in cardContainer)
+        {
+            if (child != cardPrefab)
+                Destroy(child.gameObject);
+        }
+
+        // Limpiar listas
         cardListToSort.Clear();
+
+        // Resetear el grupo de cartas
+        if (cardGroup != null)
+        {
+            cardGroup.ResetGroup();
+        }
 
         int cardsToShow = 0;
 
         switch (MemoryGameManagerUI.Instance.GetDifficulty())
         {
             case DifficultyEnum.Easy:
-                cardsToShow = 12; // significa 6 pares
+                cardsToShow = 12; // 6 pares
                 break;
             case DifficultyEnum.Normal:
-                cardsToShow = 16; // significa 8 pares 
+                cardsToShow = 16; // 8 pares
                 break;
             case DifficultyEnum.Hard:
-                cardsToShow = 20; // significa 10pares
+                cardsToShow = 20; // 10 pares
                 break;
         }
 
-        // 1) Agrupamos las cartas por matchID
+        // Agrupamos las cartas por matchID
         var groupedByMatch = cardList.GroupBy(c => c.matchID).ToList();
 
-        // 2) Tomamos tantos pares como necesitemos
+        // Tomamos tantos pares como necesitemos
         int pairsToTake = cardsToShow / 2;
         var selectedGroups = groupedByMatch.Take(pairsToTake);
 
         foreach (var group in selectedGroups)
         {
-            foreach (var card in group) // aquí entran las dos (ES y EN)
+            foreach (var card in group) // cada grupo debe tener 2 cartas: ES + EN
             {
                 cardListToSort.Add(card);
             }
         }
 
-        // 3) Mezclamos
+        // Mezclamos
         System.Random rnd = new System.Random();
         IOrderedEnumerable<Card> randomized = cardListToSort.OrderBy(i => rnd.Next());
 
-        // 4) Instanciamos
+        // Instanciamos
         foreach (Card card in randomized)
         {
             Transform cardTransform = Instantiate(cardPrefab, cardContainer);
             cardTransform.gameObject.SetActive(true);
             cardTransform.name = card.cardName;
-            cardTransform.GetComponent<CardSingleUI>().SetCard(card);
+
+            var cardUI = cardTransform.GetComponent<CardSingleUI>();
+            cardUI.SetCard(card);
+
+            // Ahora sí, el CardGroup conoce TODAS las cartas
+            if (cardGroup != null)
+                cardGroup.Subscribe(cardUI);
+            else
+                Debug.LogWarning("CardGroup no está asignado en el inspector");
         }
     }
-
-
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CardGroup : MonoBehaviour
@@ -13,6 +14,7 @@ public class CardGroup : MonoBehaviour
 
     public event EventHandler OnCardMatch;
 
+    // Se suscribe cada carta a este grupo
     public void Subscribe(CardSingleUI cardSingleUI)
     {
         if (cardSingleUIList == null)
@@ -22,6 +24,7 @@ public class CardGroup : MonoBehaviour
             cardSingleUIList.Add(cardSingleUI);
     }
 
+    // Cuando seleccionas una carta
     public void OnCardSelected(CardSingleUI cardSingleUI)
     {
         selectedCardList.Add(cardSingleUI);
@@ -29,28 +32,44 @@ public class CardGroup : MonoBehaviour
         cardSingleUI.Select();
         cardSingleUI.GetCardFrontBackground().sprite = cardActive;
 
+        // Solo procesamos cuando hay 2 cartas seleccionadas
         if (selectedCardList.Count == 2)
         {
             if (CheckIfMatch())
             {
+                // Coinciden
                 foreach (CardSingleUI cardSingle in selectedCardList)
                 {
                     cardSingle.DisableCardBackButton();
                     cardSingle.SetObjectMatch();
                 }
 
+                // Sumar puntaje
+                GameHUDManager.Instance.AddScore(10);
+
                 selectedCardList.Clear();
                 OnCardMatch?.Invoke(this, EventArgs.Empty);
+
+                // Si todas están emparejadas-  GANASTE
+                if (cardSingleUIList.All(c => c.GetObjectMatch()))
+                {
+                    GameHUDManager.Instance.WinGame();
+                }
             }
             else
             {
+                // No coinciden- Error y restar oportunidades
+                GameHUDManager.Instance.AddError();
                 StartCoroutine(DontMatch());
             }
         }
+        Debug.Log($"Cartas suscritas: {cardSingleUIList.Count} - Cartas completadas: {cardSingleUIList.Count(c => c.GetObjectMatch())}");
+
 
         ResetTabs();
     }
 
+    // Resetea visual si hay más de 2 seleccionadas
     public void ResetTabs()
     {
         if (selectedCardList != null && selectedCardList.Count < 3) return;
@@ -61,6 +80,14 @@ public class CardGroup : MonoBehaviour
         }
     }
 
+    public void ResetGroup()
+    {
+        cardSingleUIList.Clear();
+        selectedCardList.Clear();
+    }
+
+
+    // Corrutina cuando NO coinciden
     private IEnumerator DontMatch()
     {
         yield return new WaitForSeconds(0.5f);
@@ -73,11 +100,13 @@ public class CardGroup : MonoBehaviour
         selectedCardList.Clear();
     }
 
-    // ahora compara por matchID en vez de name
+    // Ahora compara por matchID (ya no por name)
     private bool CheckIfMatch()
     {
         if (selectedCardList.Count != 2) return false;
 
         return selectedCardList[0].GetMatchID() == selectedCardList[1].GetMatchID();
     }
+
+
 }
